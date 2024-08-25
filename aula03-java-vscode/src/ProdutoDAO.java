@@ -1,12 +1,15 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProdutoDAO {
     public void cadastrar(Produto p) throws ClassNotFoundException,
     SQLException {
     Connection con = Conexao.getConexao();
-    PreparedStatement comando = con.prepareStatement("insert into produtos
-    (descricao, preco) values (?,?)");
+    PreparedStatement comando = con.prepareStatement("insert into produtos(descricao, preco) values (?,?)");
     comando.setString(1, p.getDescricao());
     comando.setDouble(2, p.getPreco());
     comando.execute();
@@ -15,8 +18,7 @@ public class ProdutoDAO {
     public Produto consultarById(Produto prod) throws ClassNotFoundException,
     SQLException {
     Connection con = Conexao.getConexao();
-    PreparedStatement comando = con.prepareStatement("select id, descricao,
-    preco from produtos where id=?");
+    PreparedStatement comando = con.prepareStatement("select id, descricao, preco from produtos where id=?");
     comando.setInt(1, prod.getId());
     ResultSet resultado = comando.executeQuery();
     Produto p = new Produto();
@@ -31,8 +33,7 @@ public class ProdutoDAO {
     public List<Produto> consultarTodos() throws ClassNotFoundException,
     SQLException {
     Connection con = Conexao.getConexao();
-    PreparedStatement comando = con.prepareStatement("select id, descricao,
-    preco from produtos order by descricao ");
+    PreparedStatement comando = con.prepareStatement("select id, descricao, preco from produtos order by descricao");
     ResultSet resultado = comando.executeQuery();
     List<Produto> todosProdutos = new ArrayList<Produto>();
     while (resultado.next()) {

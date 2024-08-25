@@ -15,6 +15,16 @@ public class ProdutoDAO {
     comando.execute();
     con.close();
     }
+
+    public void deletarById(Produto p) throws ClassNotFoundException,
+    SQLException {
+    Connection con = Conexao.getConexao();
+    PreparedStatement comando = con.prepareStatement("delete from produtos where id = ?");
+    comando.setInt(1, p.getId());
+    comando.execute();
+    con.close();
+    }
+
     public Produto consultarById(Produto prod) throws ClassNotFoundException,
     SQLException {
     Connection con = Conexao.getConexao();

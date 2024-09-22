@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "c:\\Users\\anney\\Downloads\\mysql-connector-j-9.0.0.jar"
+    ],
+    "java.project.sourcePaths": [
+        "aula03-java-vscode\\src"
+    ]
+}
